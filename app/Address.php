@@ -7,32 +7,32 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Rest
+ * Client
  *
  * @mixin Eloquent
- * @method static Builder|Rest newModelQuery()
- * @method static Builder|Rest newQuery()
- * @method static Builder|Rest query()
+ * @method static Builder|Client newModelQuery()
+ * @method static Builder|Client newQuery()
+ * @method static Builder|Client query()
  * @property int $id
- * @property int $rest_id
+ * @property int $client_id
  * @property string $region
- * @property string $nas_punkt
+ * @property string $city
  * @property string $street
  * @property string $house
- * @property string $index
+ * @property string $postcode
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereHouse($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereIndex($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereNasPunkt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address wherePostcode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereRegion($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereRestId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereClientId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Address whereStreet($value)
  */
 class Address extends Model
 {
-    protected $table = 'Address';
+    protected $table = 'address';
 
-    protected $fillable = ['id', 'rest_id', 'region', 'nas_punkt', 'street', 'house', 'index'];
+    protected $fillable = ['id', 'client_id', 'region', 'city', 'street', 'house', 'postcode'];
 
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 }

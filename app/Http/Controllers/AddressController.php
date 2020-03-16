@@ -57,7 +57,7 @@ class AddressController extends Controller
     public function update(AddressRequest $request, $id)
     {
         $address = Address::query()->findOrFail($id);
-        $address->fill($request->except(['game_id']));
+        $address->fill($request->except(['id']));
         $address->save();
         return response()->json($address);
     }

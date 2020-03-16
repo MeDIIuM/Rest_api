@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class RestRequest extends FormRequest
+class ClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,12 +35,12 @@ class RestRequest extends FormRequest
                 return $rules;
             case 'PUT':
                 return [
-                    'rest_id' => 'required|integer|exists:Rest,id', //должен существовать.
+                    'rest_id' => 'required|integer|exists:Client,id', //должен существовать.
                     'name' => 'required|max:255',
                     'surname' => 'required|max:255']+ $rules;
             case 'DELETE':
                 return [
-                    'rest_id' => 'required|integer|exists:Rest,id'
+                    'rest_id' => 'required|integer|exists:Client,id'
                 ];
         }
     }

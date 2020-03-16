@@ -13,7 +13,7 @@ class CreateRestTable extends Migration
      */
     public function up()
     {
-        Schema::create('Rest', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('surname');
@@ -28,6 +28,6 @@ class CreateRestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Rest');
+        Schema::dropIfExists('clients');
     }
 }

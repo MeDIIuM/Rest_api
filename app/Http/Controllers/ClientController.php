@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Address;
-use App\Rest;
+use App\Client;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use App\Http\Requests\RestRequest;
+use App\Http\Requests\ClientRequest;
 use Symfony\Component\HttpFoundation\Request;
 
-class RestController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,42 +22,42 @@ class RestController extends Controller
      */
     public function index()
     {
-        return Rest::with('addresses')->get();
+        return Client::with('addresses')->get();
 
     }
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Rest|Builder|Model
+     * @return Client|Builder|Model
      */
     public function store(Request $request)
     {
-        return Rest::query()->create($request->validated());
+        return Client::query()->create($request->validated());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Rest $user
-     * @return Rest|Rest[]|Builder|Builder[]|Collection|Model
+     * @param Client $user
+     * @return Client|Client[]|Builder|Builder[]|Collection|Model
      */
-    public function show(Rest $user)
+    public function show(Client $user)
     {
-        return $user = Rest::query()->findOrFail($user);
+        return $user = Client::query()->findOrFail($user);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param RestRequest $request
+     * @param ClientRequest $request
      * @param $id
      * @return JsonResponse
      */
-    public function update(RestRequest $request, $id)
+    public function update(ClientRequest $request, $id)
     {
-        $user = Rest::query()->findOrFail($id);
-        $user->fill($request->except(['game_id']));
+        $user = Client::query()->findOrFail($id);
+        $user->fill($request->except(['id']));
         $user->save();
         return response()->json($user);
     }
@@ -71,7 +71,7 @@ class RestController extends Controller
      */
     public function destroy($id)
     {
-        $user = Rest::query()->findOrFail($id);
+        $user = Client::query()->findOrFail($id);
         if($user->delete()) {
             return response(null, 204);
         }

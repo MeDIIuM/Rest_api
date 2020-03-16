@@ -13,14 +13,14 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('Address', function (Blueprint $table) {
+        Schema::create('address', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('rest_id');
+            $table->integer('client_id');
             $table->string('region');
-            $table->string('nas_punkt');
+            $table->string('city');
             $table->string('street');
             $table->string('house');
-            $table->string('index');
+            $table->string('postcode');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Address');
+        Schema::dropIfExists('address');
     }
 }
